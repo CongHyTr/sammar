@@ -199,7 +199,7 @@ p {
 }
 
 .about .about__img {
-    transform: translateY(10%);
+    margin-top: 60px;
 }
 
 .about .about__img img {
@@ -224,6 +224,10 @@ p {
     border-radius: 30px;
     padding: 3px;
     margin-right: 5px;
+}
+
+.about .about__img.animate__animated.animate__fadeInLeft, .about__text.animate__animated.animate__fadeInRight{
+    animation-duration: 2s;
 }
 /* end about  */
 
@@ -294,21 +298,48 @@ p {
     align-items: center;
 }
 
+@keyframes move2 {
+    0% {
+        transform: rotate(1deg) translate(2px, 2px);
+    }
+
+    50% {
+        transform: rotate(-1deg) translate(-2px, -2px);
+    }
+
+    100% {
+        transform: rotate(1deg) translate(2px, 2px);
+    }
+}
 .feature .feature__content .feature__img img {
     max-width: 100%;
+    animation: move2 5s infinite ;
 }
 
 .feature .feature__item {
+    padding: 0 50px 30px 0px;
+}
+
+.feature .feature__text .feature__story .feature__item:nth-of-type(2) {
+    padding: 0px 0px 30px 50px;
+}
+
+
+.feature .feature__item .feature__itemBG{
     display: flex;
     justify-content: space-between;
     background-color: white;
     box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.1);
-    padding: 50px 30px;
     border-radius: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+    padding: 30px;
     width: 500px;
 }
 
+.feature .feature__item .feature__itemBG::after {
+    content: "";
+    
+}
 
 
 .feature .feature__item i {
@@ -325,9 +356,7 @@ p {
     margin-left: 20px;
 }
 
-.feature .feature__text .feature__story .feature__item.right {
-    transform: translateX(25%);
-}
+
 
 /* end feature */
 
@@ -522,8 +551,10 @@ p {
 
 .footer::before {
     content: "";
-    background: url(../image/pattern2.png) no-repeat;
+    background-image: url(../image/pattern2.png);
     background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
     position: absolute;
     top: 0;
     left: 0;
@@ -531,22 +562,13 @@ p {
     height: 100%;
 }
 
-/* .footer::after {
-    content: "";
-    background: url(../image/pattern12.png) no-repeat center / cover;
-    position: absolute;
-    top: 0 ;
-    left: 0;
-    width: 100%;
-    height: 100%;
-} */
-
 .footer__container {
     margin: 0 auto;
     width: 70%;
 }
 
 /* footer form */
+
 .footer .footer__container .form {
     padding: 50px 60px;
     border-radius: 10px;
@@ -555,6 +577,7 @@ p {
     justify-content: space-between;
     align-items: center;
     background: url(../image/pattern3.png) ;
+    background-color: white;
     background-size:  100%;
     background-position: bottom;
     position: relative;
@@ -563,7 +586,7 @@ p {
 .footer .form .form__right {
     display: flex;
     justify-content: flex-start;
-    box-shadow: 0 0px 30px 0 rgba(0, 0, 0, 0.1);;
+    box-shadow: 0 0px 30px 0 rgba(0, 0, 0, 0.1);
 }
 
 .footer .form .form__right input{
@@ -599,19 +622,6 @@ p {
     background-position: right center;
 }
 
-@keyframes emailButton {
-    0% {
-        transform: translateX(10px);
-    }
-    50% {
-        transform: translateX(-10px);
-        opacity: 0.5;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 0;
-    }
-}
 .footer .form .form__right button:hover i{
     animation-name: emailButton;
 }
@@ -622,6 +632,7 @@ p {
     margin: 50px;
     display: flex;
     justify-content: space-between;
+    position: relative;
 }
 
 
@@ -659,8 +670,6 @@ p {
     position: relative;
     margin-bottom: 50px;
     padding-bottom: 10px;
-    transform:  translateY(10px);
-
 }
 
 .footer .footer__contact .contact__item h3::before {
@@ -684,19 +693,16 @@ p {
     background-size: 200%;
     position: absolute;
     bottom: 0;
-    left: 0;
-    transform: translateX(20px);
+    left: 20px;
 }
 
 
 .footer .footer__contact .contact__item ul {
     list-style: none;
-    transform:  translateX(-40px);
-    
 }
 
 .footer .footer__contact .contact__item li {
-    margin: 20px;
+    margin: 20px 0;
 }
 
 .footer .footer__contact .contact__item i {
@@ -708,18 +714,12 @@ p {
     text-decoration: none;
     color: #636363;    
     display: block;
-    margin-left: 20px;
     transition: all 0.5s;
 }
 
-.footer .contact__item ul li a:hover {
+.footer .footer__contact .contact__item a:hover {
     color: white;
 }
-
-
-
-
-
 
 /* end footer contact */
 /* copy right */
@@ -757,3 +757,31 @@ p {
 .footer .copyright div span {
     color: #f55f8d;
 }
+
+/* back to top */
+.backToTop {
+    width: 50px;
+    height: 50px;
+    background: #f55f8c;
+    border-radius: 8px;
+    line-height: 50px;
+    text-align: center;
+    display: block;
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    color: white;
+    transition: all 0.3s;
+    box-shadow: -4px 4px 24px -10px #f55f8d;
+    opacity: 0;
+}
+
+.backToTop.cd-top--is-visible { 
+    visibility: visible;
+    opacity: 1;
+  }
+  
+.backToTop.cd-top--fade-out {
+    opacity: 1;
+  }
+
